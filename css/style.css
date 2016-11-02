@@ -1,0 +1,34 @@
+.footer {
+
+margin-top: 3%;
+color: white;
+line-height: 5em;
+
+}
+.footer a{
+color: white;
+}
+
+/*.picprod {
+max-height: 300px;
+}*/
+
+.panelprod:hover {
+transition: all 0.8s ease-out;
+background-color: #2196f3;
+
+}
+
+.panelprod:hover h3 {
+
+color: white;
+}
+
+.panelprod:hover  {
+color: white;
+
+ }
+
+.row {
+display: flex;
+}
