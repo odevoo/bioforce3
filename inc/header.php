@@ -45,20 +45,39 @@ if (session_status() == PHP_SESSION_NONE) {
         <ul class="nav navbar-nav">
           <!-- On n'affichie une navbar different en fonction de la présence ou non d'une authentification active -->
           <?php if (isset($_SESSION['auth'])): ?>
-            <li><a href="logout.php">Se deconnecter</a></li>
+            <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Se deconnecter</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="register.php">Categorie<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <?php
+                $req = $pdo->query('SELECT idCategorie, libCategorie FROM categories');
+                $listCategory = $req->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($listCategory as $category) {
+                  echo '<li><a href="produit.php?cat='.$category['idCategorie'].'">'.$category['libCategorie'].'</a></li>';
+                }
+                ?>
+              </ul>
+            </li>
+            <li> <a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"> </span>Panier <?php
+            require_once 'inc/db.php';
+            $req = $pdo->query('SELECT COUNT(idProduit) FROM panier WHERE idClient = '.$_SESSION['idClient'].' AND validePanier = 0');
+            $nbrArticle = $req->fetchColumn(0);
+            echo '<span class="label label-danger label-as-badge">'.$nbrArticle.'</span>';
+
+            ?></a></li>
+            <li><a href="contact.php"><span class='glyphicon glyphicon-envelope'></span> Contact</a></li>
           <?php else: ?>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="register.php">Categorie<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <?php
                 $req = $pdo->query('SELECT idCategorie, libCategorie FROM categories');
                 $listCategory = $req->fetchAll(PDO::FETCH_ASSOC);
-                    foreach ($listCategory as $category) {
-                      echo '<li><a href="produit.php?cat='.$category['idCategorie'].'">'.$category['libCategorie'].'</a></li>';
-                    }
+                foreach ($listCategory as $category) {
+                  echo '<li><a href="produit.php?cat='.$category['idCategorie'].'">'.$category['libCategorie'].'</a></li>';
+                }
                 ?>
               </ul>
             </li>
-            <li> <a href="panier.php"><span class="glyphicon glyphicon-shopping-cart"> Panier</span></a></li>
+
             <li><a href="register.php"><span class='glyphicon glyphicon-user'></span> S'inscrire</a></li>
             <li><a href="login.php"><span class="glyphicon glyphicon-off"></span> Se connecter</a></li>
             <li><a href="contact.php"><span class='glyphicon glyphicon-envelope'></span> Contact</a></li>

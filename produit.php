@@ -2,6 +2,7 @@
 $titrePage = 'BioFroce3 - Nos produits';
 require 'inc/header.php';
 
+
 $idCategorie = htmlentities(strip_tags($_GET['cat']));
 
 $req = $pdo->prepare('SELECT libCategorie FROM categories WHERE idCategorie = :idCategorie');
@@ -20,7 +21,9 @@ $listeProduits = $req->fetchAll(PDO::FETCH_ASSOC);
 // print_r($listeProduits);
 // echo '</pre>';
 
-echo '<form method="post" action="ajoutPanier.php"><div class="row">';
+echo '<form class="form-group" method="post" action="addcart.php">
+<input type="hidden" name="cat" value="'.$idCategorie.'"/>
+<div class="row">';
 foreach ($listeProduits as $index => $produit) {
 
   echo '<div class="panel panel-default panelprod col-md-4"><div class="panel-body text-center">';
@@ -29,14 +32,15 @@ foreach ($listeProduits as $index => $produit) {
   echo "<p>".$produit['descProduit'].'</p>';
   echo '<p class="text-center"><strong>'.$produit['prixProduit'].'</strong></p>';
   if (isset($_SESSION['auth'])) {
-    echo '<div class="container-fluid"><input class="form-control" type="number" name="quantite" placeholder="Quantite"></div><div class="container-fluid"><button class="btn btn-primary" type="submit" name="btn_'.$produit['idProduit'].'">Commander</button></div>';
+    echo '<input class="form-control" type="number" name="quantite['.$produit['idProduit'].']" placeholder="Quantite"/>
+    <button value="commander" class="btn btn-primary btn-cmd form-control" type="submit" name="btn['.$produit['idProduit'].']">Commander</button>';
   } else {
     echo '<p class="text-center alert alert-danger"> Vous devez vous authentifier pour commander</p>';
   }
   echo "</div></div>";
-if (($index + 1) % 3 == 0 && $index !=0) {
-  echo '</div><div class="row">';
-}
+  if (($index + 1) % 3 == 0 && $index !=0) {
+    echo '</div><div class="row">';
+  }
 
 }
 echo "</div></form>";
