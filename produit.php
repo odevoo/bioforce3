@@ -32,7 +32,7 @@ foreach ($listeProduits as $index => $produit) {
   echo "<p>".$produit['descProduit'].'</p>';
   echo '<p class="text-center"><strong>'.$produit['prixProduit'].'</strong></p>';
   if (isset($_SESSION['auth'])) {
-    echo '<input class="form-control" type="number" name="quantite['.$produit['idProduit'].']" placeholder="Quantite"/>
+    echo '<input class="form-control" type="number" min="0" name="quantite['.$produit['idProduit'].']" placeholder="Quantite"/>
     <button value="commander" class="btn btn-primary btn-cmd form-control" type="submit" name="btn['.$produit['idProduit'].']">Commander</button>';
   } else {
     echo '<p class="text-center alert alert-danger"> Vous devez vous authentifier pour commander</p>';

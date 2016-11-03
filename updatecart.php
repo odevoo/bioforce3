@@ -7,11 +7,12 @@ print_r($_POST);
 echo "</pre>";
 
 if (!empty($_POST)) {
+$quantite = $_POST['quantite'];
 $idProduit = $_POST['produit'];
 $idClient = $_SESSION['idClient'];
-$req = "UPDATE panier WHERE idProduit = ? AND idClient = ? AND validePanier = 0";
+$req = "UPDATE panier SET qteProduit = ? WHERE idProduit = ? AND idClient = ? AND validePanier = 0";
 $stmt = $pdo->prepare($req);
-$stmt->execute(array($idProduit, $idClient));
+$stmt->execute(array($quantite, $idProduit, $idClient));
 
 
 
