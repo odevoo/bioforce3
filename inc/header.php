@@ -83,9 +83,9 @@ if (session_status() == PHP_SESSION_NONE) {
             <li><a href="contact.php"><span class='glyphicon glyphicon-envelope'></span> Contact</a></li>
           <?php endif; ?>
         </ul>
-        <form class="navbar-form navbar-right" action="index.html" method="post">
+        <form class="navbar-form navbar-right" action="produit.php" method="post">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Produit">
+            <input type="text" name="search" class="form-control" placeholder="Produit" required>
           </div>
           <button type="submit" class="btn btn-primary">Rechercher</button>
         </form>
