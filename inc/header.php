@@ -65,6 +65,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
             ?></a></li>
             <li><a href="contact.php"><span class='glyphicon glyphicon-envelope'></span> Contact</a></li>
+            <li><a href="admin.php"><span class='glyphicon glyphicon-cog'></span> Admin</a></li>
           <?php else: ?>
             <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="register.php">Categorie<span class="caret"></span></a>
               <ul class="dropdown-menu">
