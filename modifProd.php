@@ -42,7 +42,7 @@ $prod = $stmt->fetch();
 
 $photo = $prod['photoProduit'];
 $_SESSION['photomod'] = "img/{$photo}";
-
+echo $_POST['categorie'];
 
 ?>
 <h1>Modification du produit</h1>
@@ -67,8 +67,11 @@ $_SESSION['photomod'] = "img/{$photo}";
       <?php
       $req = $pdo->query('SELECT idCategorie, libCategorie FROM categories');
       $listCategory = $req->fetchAll(PDO::FETCH_ASSOC);
+      debug($listCategory);
       foreach ($listCategory as $category) {
+
         $cat = $category['idCategorie'];
+
         if ($cat == $_POST['categorie']) {
           echo '<option selected value="'.$cat.'">'.$category['libCategorie'].'</option>';
         }else {
