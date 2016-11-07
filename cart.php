@@ -41,5 +41,7 @@ echo '<td colspan ="2"><strong>'.number_format($total, 2, ',', ' ').' €</stron
 echo "</tr>";
 echo "</tfoot></table>";
 
+echo '<form method="post" action="validCart.php"><div class="form-group text-center"><button type="submit" name="btnSub" class="btn btn-primary">Valider ma commande</button></div></form>';
+
 require 'inc/footer.php'
 ?>
