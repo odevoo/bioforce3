@@ -37,7 +37,7 @@ echo "</tbody></table>";
 <h1>Produits actuels</h1>
 
 <?php
-$rqProduits = 'SELECT idProduit, libProduit, descProduit, photoProduit, prixProduit FROM produits';
+$rqProduits = 'SELECT idProduit, libProduit, idCategorie, descProduit, photoProduit, prixProduit FROM produits';
 $req = $pdo->prepare($rqProduits);
 $req->execute();
 $listeProduits = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -45,7 +45,20 @@ $listeProduits = $req->fetchAll(PDO::FETCH_ASSOC);
 echo '<table class="table table-striped"><thead><tr><th>Libele</th><th>Modification</th><th>Suppression</th></tr></thead><tbody>';
 foreach ($listeProduits as $produit) {
 
-  echo '<tr><td>'.$produit['libProduit'].'</td><td><form method="post" action="modifProd.php"><input type="hidden" name="categorie" value="'.$produit['idProduit'].'"/><input type="submit" name="btnSupp" value="Modifier" class="btn  btn-xs btn-warning"/></form></td><td><form method="post" action="deleteProd.php"><input type="hidden" name="categorie" value="'.$produit['idProduit'].'"/><input type="submit" name="btnSupp" value="Supprimer" class="btn  btn-xs btn-danger"/></form></td></tr>';
+  echo '<tr>
+  <td>'.$produit['libProduit'].'</td>
+  <td><form method="post" action="modifProd.php">
+  <input type="hidden" name="categorie" value="'.$produit['idCategorie'].'"/>
+  <input type="submit" name="btnSupp" value="Modifier" class="btn  btn-xs btn-warning"/>
+  </form>
+  </td>
+  <td>
+  <form method="post" action="deleteProd.php">
+  <input type="hidden" name="categorie" value="'.$produit['idProduit'].'"/>
+  <input type="submit" name="btnSupp" value="Supprimer" class="btn  btn-xs btn-danger"/>
+  </form>
+  </td>
+  </tr>';
 }
 echo "</tbody></table>";
 
@@ -79,7 +92,7 @@ echo "</tbody></table>";
         echo '<option value="'.$cat.'">'.$category['libCategorie'].'</option>';
       }
       ?>
-      
+
     </select>
   </div>
   <div class="form-group">

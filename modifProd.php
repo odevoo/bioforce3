@@ -42,7 +42,7 @@ $prod = $stmt->fetch();
 
 $photo = $prod['photoProduit'];
 $_SESSION['photomod'] = "img/{$photo}";
-echo $_POST['categorie'];
+
 
 ?>
 <h1>Modification du produit</h1>
