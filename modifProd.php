@@ -37,7 +37,7 @@ if (!empty($_POST['btnMod'])) {
 
 $req = 'SELECT * FROM produits WHERE idProduit = ?';
 $stmt = $pdo->prepare($req);
-$stmt->execute(array($_POST['categorie']));
+$stmt->execute(array($_POST['idprod']));
 $prod = $stmt->fetch();
 
 $photo = $prod['photoProduit'];
@@ -45,9 +45,9 @@ $_SESSION['photomod'] = "img/{$photo}";
 
 
 ?>
-<h1>Modification du produit</h1>
+<h1>Modification du produit: <?php echo $prod['libProduit']; ?></h1>
 <form class="" action="" method="post" enctype="multipart/form-data">
-  <?php echo '<input type="hidden" name="idProd" value="'.$_POST['categorie'].'">'?>
+  <?php echo '<input type="hidden" name="idProd" value="'.$_POST['idprod'].'">'?>
   <div class="form-group">
     <label for="">Libélé du produit</label><?php
     echo '<input type="text" name="lib" value="'.$prod["libProduit"].'" class="form-control"  />'?>
@@ -63,7 +63,7 @@ $_SESSION['photomod'] = "img/{$photo}";
   <div class="form-group">
     <label for="">Catégorie</label>
     <select class="form-control" name="cat" required>
-      <option disabled>Selectionnez une catégorie</option>
+      
       <?php
       $req = $pdo->query('SELECT idCategorie, libCategorie FROM categories');
       $listCategory = $req->fetchAll(PDO::FETCH_ASSOC);

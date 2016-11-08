@@ -23,8 +23,19 @@ if (session_status() == PHP_SESSION_NONE) {
   <!-- Bootstrap core CSS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-  <link href="css/app.css" rel="stylesheet">
+  <?php
+  if (!isset($_SESSION['css'])) {$_SESSION['css'] = 1;}
+
+
+  if ($_SESSION['css'] == 2) {
+    echo '<link href="css/app2.css" rel="stylesheet">';
+  } else if ($_SESSION['css'] == 3){
+    echo '<link href="css/app3.css" rel="stylesheet">';
+  } else {
+    echo '<link href="css/app.css" rel="stylesheet">';
+  } ?>
   <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -45,8 +56,8 @@ if (session_status() == PHP_SESSION_NONE) {
         <ul class="nav navbar-nav">
           <!-- On n'affichie une navbar different en fonction de la présence ou non d'une authentification active -->
           <?php if (isset($_SESSION['auth'])): ?>
-            <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Se deconnecter</a></li>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="register.php">Categorie<span class="caret"></span></a>
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="register.php"><span class="glyphicon glyphicon-glass"></span> Categorie<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <?php
                 $req = $pdo->query('SELECT idCategorie, libCategorie FROM categories');
@@ -57,7 +68,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 ?>
               </ul>
             </li>
-            <li> <a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"> </span>Panier <?php
+            <li> <a href="cart.php"><span class="glyphicon glyphicon-shopping-cart"> </span> Panier <?php
             require_once 'inc/db.php';
             $req = $pdo->query('SELECT COUNT(idProduit) FROM panier WHERE idClient = '.$_SESSION['idClient'].' AND validePanier = 0');
             $nbrArticle = $req->fetchColumn(0);
@@ -66,8 +77,9 @@ if (session_status() == PHP_SESSION_NONE) {
             ?></a></li>
             <li><a href="contact.php"><span class='glyphicon glyphicon-envelope'></span> Contact</a></li>
             <li><a href="admin.php"><span class='glyphicon glyphicon-cog'></span> Admin</a></li>
+            <li><a href="logout.php"><span class="glyphicon glyphicon-off"></span> Se deconnecter</a></li>
           <?php else: ?>
-            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="register.php">Categorie<span class="caret"></span></a>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="register.php"><span class="glyphicon glyphicon-glass"></span> Categorie <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <?php
                 $req = $pdo->query('SELECT idCategorie, libCategorie FROM categories');
@@ -86,9 +98,9 @@ if (session_status() == PHP_SESSION_NONE) {
         </ul>
         <form class="navbar-form navbar-right" action="produit.php" method="post">
           <div class="form-group">
-            <input type="text" name="search" class="form-control" placeholder="Produit" required>
+            <input type="text" name="search" class="form-control" placeholder="Produit" id="inputSearch" required>
           </div>
-          <button type="submit" class="btn btn-primary">Rechercher</button>
+          <button type="submit" class="btn btn-primary" id="btnSearch">Rechercher</button>
         </form>
       </div><!--/.nav-collapse -->
     </div>

@@ -29,7 +29,7 @@ foreach ($panierClient as $key => $value) {
   echo '<td class="text-center"><form method="post" action="updatecart.php"><input type="hidden" name="produit" value="'.$panierClient[$key]['idProduit'].'"><input type="number" min="0" name="quantite" value="'.$panierClient[$key]['qteProduit'].'"><input type="submit" name="btnSub" value="Modifier" class="btn btn-xs btn-primary"></form></td>';
   echo '<td class="text-right">'.number_format($panierClient[$key]['prixProduit'], 2, ',', ' ').' €</td>';
   echo '<td class="text-right">'.number_format(($panierClient[$key]['prixProduit'] * $panierClient[$key]['qteProduit']), 2, ',', ' ').' €</td>';
-  echo '<td class="text-center"><form method="post" action="deletecart.php"><input type="hidden" name="produit" value="'.$panierClient[$key]['idProduit'].'"><input type="submit" name="btnSub" value="Supprimer" class="btn btn-xs btn-warning"></form></td>';
+  echo '<td class="text-center"><form method="post" action="deletecart.php"><input type="hidden" name="produit" value="'.$panierClient[$key]['idProduit'].'"><input type="submit" name="btnSub" value="Supprimer" class="btn btn-xs btn-danger"></form></td>';
   echo "</tr>";
   $total += $panierClient[$key]['prixProduit'] * $panierClient[$key]['qteProduit'];
 }

@@ -1,0 +1,20 @@
+<p><strong>RAISON SOCIALE:</strong> SARL Bioforce3</p>
+<p><strong>FORME JURIDIQUE:</strong> SARL au capital de 1€</p>
+<p><strong>ADRESSE:</strong> 5 rue de l'église 78610 LE PERRAY EN YVELINES</p>
+<p><strong>MAIL:</strong> bioforce3@gmail.com</p>
+<p><strong>TEL:</strong> 01.02.03.04.05</p>
+<p><strong>RCS:</strong> RAMBOUILLET: 1234567890010</p>
+<p><strong>CODE APE:</strong> 4721Z</p>
+<p><strong>TVA Intracommunautaire:</strong> FR78123456789</p>
+<p><strong>RESPONSABLE DE PUBLICATION:</strong> Bruno TAVERNIER</p>
+
+<hr>
+<p><strong>HEBERGEMENT:</strong></p>
+<p><strong>ADNPY</strong></p>
+<p><strong>ADRESSE:</strong> 5 rue de l'église 78610 LE PERRAY EN YVELINES</p>
+<p><strong>TEL:</strong> 08 36 65 65 65</p>
+<p><strong>SIREN:</strong> 819709106/9499Z</p>
+<hr>
+
+<p>ENREGISTREMENT auprès de la CNIL sous le numéro XXXXXXXXXXXXXX</p>
+<p>Conformément à la loi Informatique et libertés du 6 janvier 1978 modifiée, vous possédez le droit d'accès, de rectification et de suppression des données vous concernant. Vous pouvez adresser votre demande par mail bioforce3@gmail.com</p>

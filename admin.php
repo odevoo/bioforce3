@@ -7,6 +7,9 @@ session_start();
 require 'inc/header.php';
 require_once 'inc/functions.php';
 require_once 'inc/db.php';
+
+echo '<form action="changecss.php" method="post"><button type="submit" name="btnSub" class="btn btn-primary">Changer de themes</button></form>';
+
 ?>
 <h1>Catégories actuelles</h1>
 
@@ -26,7 +29,7 @@ echo "</tbody></table>";
 
 <form class="" action="addCat.php" method="post">
   <div class="form-group">
-    <input type="text" name="cat" class="form-control" value="">
+    <input type="text" name="cat" class="form-control" value="" required>
   </div>
   <div class="form-group">
     <button type="submit" name="btnSub" class="btn btn-primary">Créer categorie</button>
@@ -48,6 +51,7 @@ foreach ($listeProduits as $produit) {
   echo '<tr>
   <td>'.$produit['libProduit'].'</td>
   <td><form method="post" action="modifProd.php">
+  <input type="hidden" name="idprod" value="'.$produit['idProduit'].'"/>
   <input type="hidden" name="categorie" value="'.$produit['idCategorie'].'"/>
   <input type="submit" name="btnSupp" value="Modifier" class="btn  btn-xs btn-warning"/>
   </form>

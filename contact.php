@@ -1,5 +1,5 @@
 <?php
-
+$titrePage = "Contact - Bioforce3";
 require 'inc/header.php';
  ?>
 
