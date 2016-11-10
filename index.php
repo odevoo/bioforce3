@@ -1,6 +1,23 @@
 <?php $titrePage = "Accueil BioForce3" ?>
 <?php require 'inc/header.php' ?>
+<?php 
+/**
+ * if (!isset($_COOKIE['nbvisite'])) {
+    
+    setcookie('nbvisite', 1, time()+3600);
+} else {
+    setcookie('nbvisite', ++$_COOKIE['nbvisite']);
+}
 
+
+if (!isset($_COOKIE['nbvisite'])) {
+    echo "1";
+} else {
+echo $_COOKIE['nbvisite'];
+}
+ */
+
+ ?>
 <h1 class="text-center">Bienvenue <?php if (isset($_SESSION['auth'])): ?> <?php echo $_SESSION['prenom']. ' '.$_SESSION['nom']; ?>
 
 <?php endif; ?> dans nôtre épicerie Bio</h1>

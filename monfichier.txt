@@ -1,0 +1,1 @@
+a:1:{i:0;a:4:{s:9:"idProduit";s:1:"3";s:10:"qteProduit";s:2:"20";s:10:"libProduit";s:7:"Carotte";s:11:"prixProduit";s:5:"10.80";}}
